@@ -8,12 +8,12 @@ module SocialShareButton
       
       SocialShareButton.config.allow_sites.each do |name|
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
-        html << link_to("","#", :rel => "nofollow #{rel}", 
+        html << link_to("<i class=\"icon-#{name}-sign\"></i>".html_safe, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
-                        :class => "social-share-button-#{name}", 
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
+      html << opts[:opt_button]
       html << "</div>"
       raw html.join("\n")
     end
