@@ -11,7 +11,8 @@ window.SocialShareButton =
     url = $(el).parent().data("url") || encodeURIComponent(location.href)
     switch site
       when "weibo"
-        SocialShareButton.openUrl("http://v.t.sina.com.cn/share/share.php?url=#{url}&pic=#{img}&title=#{title}&content=utf-8")
+        #SocialShareButton.openUrl("http://v.t.sina.com.cn/share/share.php?url=#{url}&pic=#{img}&title=#{title}&content=utf-8")
+        SocialShareButton.openUrl("http://v.t.sina.com.cn/share/share.php?url=#{url}&title=#{title}&content=utf-8")
       when "twitter"
         SocialShareButton.openUrl("https://twitter.com/home?status=#{title}: #{url}")
       when "douban"
