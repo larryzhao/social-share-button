@@ -11,7 +11,6 @@ module SocialShareButton
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
 
         link_content = name == 'weibo' ? configs[:link_content] : "<i class=\"icon-#{name}\"></i>".html_safe
-        html << "<span>#{title}</span>" 
         html << link_to(link_content, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
                         "data-user" => configs[:user],
