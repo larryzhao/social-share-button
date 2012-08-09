@@ -5,17 +5,20 @@ module SocialShareButton
       rel = opts[:rel]
       html = []
       url = opts[:url]
-      html << "<div class='social-share-button' data-title='#{title}', data-url='#{url}' data-img='#{opts[:image]}'>"
+      html << "<div class='social-share-button' data-title='#{title.gsub(/data_user/, opts['data-user'])}', data-url='#{url}' data-img='#{opts[:image]}'>"
       
-      SocialShareButton.config.allow_sites.each do |name,user|
+      SocialShareButton.config.allow_sites.each do |name,configs|
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
-        html << link_to("<i class=\"icon-#{name}\"></i>".html_safe, "#", :rel => "nofollow #{rel}", 
+
+        link_content = name == 'weibo' ? configs[:link_content] : "<i class=\"icon-#{name}\"></i>".html_safe
+
+        html << link_to(link_content, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
-                        "data-user" => user,
+                        "data-user" => configs[:user],
+                        "data-title" => configs[:title].gsub(/data_user/, configs[:user])
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
-      html << opts[:opt_button]
       html << "</div>"
       raw html.join("\n")
     end
