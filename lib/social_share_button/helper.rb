@@ -14,7 +14,7 @@ module SocialShareButton
         html << link_to(link_content, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
                         "data-user" => configs[:user],
-                        "data-title" => title.gsub(/data_user/, configs[:user]).gsub(/spot_name/, opts[:spot_name] || '')
+                        "data-title" => title.gsub(/data_user/, configs[:user]).gsub(/spot_name/, opts[:spot_name] || ''),
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
