@@ -13,11 +13,10 @@ module SocialShareButton
 
         link_content = name == 'weibo' ? configs[:link_content] : "<i class=\"icon-#{name}\"></i>".html_safe
         
-        html << "<span>#{title}</span>"
         html << link_to(link_content, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
                         "data-user" => configs[:user],
-                        "data-title" => title.gsub(/data_user/, configs[:user]).gsub(/data_link/, url),
+                        "data-title" => title.gsub(/data_user/, configs[:user]),
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
