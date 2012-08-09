@@ -5,7 +5,8 @@ module SocialShareButton
       rel = opts[:rel]
       html = []
       url = opts[:url]
-      html << "<div class='social-share-button' data-title='#{title.gsub(/data_user/, opts['data-user'])}', data-url='#{url}' data-img='#{opts[:image]}'>"
+      #html << "<div class='social-share-button' data-title='#{title.gsub(/data_user/, opts['data-user'])}', data-url='#{url}' data-img='#{opts[:image]}'>"
+      html << "<div class='social-share-button' data-url='#{url}' data-img='#{opts[:image]}'>"
       
       SocialShareButton.config.allow_sites.each do |name,configs|
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
