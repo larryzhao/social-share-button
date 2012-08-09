@@ -6,10 +6,11 @@ module SocialShareButton
       html = []
       html << "<div class='social-share-button' data-title='#{title}' data-img='#{opts[:image]}'>"
       
-      SocialShareButton.config.allow_sites.each do |name|
+      SocialShareButton.config.allow_sites.each do |name,user|
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
         html << link_to("<i class=\"icon-#{name}\"></i>".html_safe, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
+                        "data-user" => user,
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
