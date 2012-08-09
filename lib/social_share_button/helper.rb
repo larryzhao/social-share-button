@@ -12,7 +12,7 @@ module SocialShareButton
         html << link_to("<i class=\"icon-#{name}\"></i>".html_safe, "#", :rel => "nofollow #{rel}", 
                         "data-site" => name, 
                         "data-user" => user,
-                        "data-url" => url;
+                        "data-url" => url,
                         :onclick => "return SocialShareButton.share(this);",
                         :title => h(link_title))
       end
